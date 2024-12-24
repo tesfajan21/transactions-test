@@ -111,7 +111,9 @@ export default function TransactionItem({
               {formatAmount(amount, type)}
             </div>
             {cashback && (
-              <div className="text-sm text-gray-400">{cashback}</div>
+              <div className="text-xs text-gray-600 bg-gray-100 rounded px-1 py-0.5">
+                {cashback}
+              </div>
             )}
           </div>
         </div>

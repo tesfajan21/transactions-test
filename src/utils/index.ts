@@ -24,17 +24,16 @@ interface RawWalletData {
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
   const now = new Date();
-  const diffTime = Math.abs(now.getTime() - date.getTime());
+  const diffTime = now.getTime() - date.getTime();
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays <= 7) {
+  if (diffDays <= 7 && diffDays > 0) {
     if (diffDays === 1) {
       return "Yesterday";
     }
     return date.toLocaleDateString("en-US", { weekday: "long" });
   }
 
-  // For older dates, show MM/DD/YY
   return date.toLocaleDateString("en-US", {
     month: "numeric",
     day: "numeric",
