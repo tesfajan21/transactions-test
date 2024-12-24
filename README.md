@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wallet App
+
+A modern, mobile-first wallet application built with Next.js and TypeScript. This app allows users to view their card balance, daily points, and transaction history with a clean and intuitive interface.
+
+## Features
+
+- 💳 Card Balance Overview
+
+  - Current balance display
+  - Available credit calculation
+  - Maximum card limit tracking
+
+- 🏆 Daily Points System
+
+  - Dynamic points calculation based on season
+  - Automatic point formatting (K format for large numbers)
+  - Daily points accumulation
+
+- 💰 Transaction Management
+
+  - Detailed transaction history
+  - Support for pending transactions
+  - Authorized user tracking
+  - Cashback percentage display
+  - Smart date formatting (relative dates for recent transactions)
+
+- 🎨 Modern UI/UX
+  - Mobile-optimized layout
+  - Clean and intuitive interface
+  - Smooth transitions and interactions
+  - Consistent design language
+
+## Screenshots
+
+### Main Screen
+
+![Main Screen](./IMG_1060.png)
+_Shows the card balance, payment status, daily points, and transaction list_
+
+### Transaction Detail
+
+![Transaction Detail](./IMG_1061.png)
+_Displays detailed information about a specific transaction_
+
+## Technology Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: FontAwesome
+- **State Management**: React Hooks
+- **Data Storage**: Local JSON
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js app router pages
+├── components/            # React components
+│   ├── CardBalance.tsx
+│   ├── DailyPoints.tsx
+│   ├── NoPaymentDue.tsx
+│   ├── TransactionDetail.tsx
+│   ├── TransactionItem.tsx
+│   └── TransactionList.tsx
+├── data/                  # Mock data
+│   └── transactions.json
+├── types/                 # TypeScript type definitions
+│   └── index.ts
+└── utils/                 # Utility functions
+    └── index.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features in Detail
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Card Balance
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Displays current balance
+- Shows available credit
+- Maximum card limit of $1,500
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Daily Points
 
-## Learn More
+- Points calculation based on season
+- First day of season: 2 points
+- Second day of season: 3 points
+- Subsequent days: 100% of points from two days ago + 60% of points from previous day
+- Automatic K formatting for points over 1,000
 
-To learn more about Next.js, take a look at the following resources:
+### Transactions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Type: Credit (expenses) or Payment (top-ups)
+- Status: Pending or Completed
+- Date formatting:
+  - Within last week: Day name
+  - Yesterday: "Yesterday"
+  - Older: MM/DD/YY
+- Support for authorized users
+- Cashback percentage display
+- Merchant icons with dynamic styling
